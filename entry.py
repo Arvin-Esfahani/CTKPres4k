@@ -5,6 +5,43 @@ from PyQt5.QtWidgets import QMessageBox
 import requests
 import json
 APICODE='2698ed7ecba778c1917a16363cc15b48'
+
+
+class Line(QtWidgets.QLineEdit):
+    def __init__(self, parent=None):
+        super(Line, self).__init__(parent)
+        self.baseStyleSheet="background-color: rgb(255, 255, 255);\nborder-radius: 10px;\nborder-style: solid;\nborder-color: rgb(205, 205, 205);\nborder-width: 2px;"
+
+    def enterEvent(self, QEvent):
+        self.baseStyleSheet=self.styleSheet()
+        self.setStyleSheet("background-color: rgb(235, 235, 235);\n"
+"border-radius: 10px;\n"
+"border-style: solid;\n"
+"border-color: rgb(185, 185, 185);\n"
+"border-width: 2px;")
+        pass
+
+
+    def leaveEvent(self, QEvent):
+        self.setStyleSheet(self.baseStyleSheet)
+        pass
+
+
+class Button(QtWidgets.QPushButton):
+
+    def __init__(self, parent=None):
+        super(Button, self).__init__(parent)
+        self.baseStyleSheet="background-color: rgba(255, 100,10);\nborder-radius: 10px;\ncolor: rgb(255, 255, 255);"
+
+    def enterEvent(self, QEvent):
+        self.baseStyleSheet=self.styleSheet()
+        self.setStyleSheet("background-color: rgba(255, 120,30);\nborder-radius: 10px;\ncolor: rgb(235, 235, 235);")
+        pass
+
+    def leaveEvent(self, QEvent):
+        self.setStyleSheet(self.baseStyleSheet)
+        pass
+
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
@@ -62,7 +99,7 @@ class Ui_Dialog(object):
         self.enterNameLabel.setAlignment(QtCore.Qt.AlignCenter)
         self.enterNameLabel.setObjectName("enterNameLabel")
         self.verticalLayout.addWidget(self.enterNameLabel)
-        self.cityNameEntry = QtWidgets.QLineEdit(self.frame)
+        self.cityNameEntry = Line(self.frame)
         self.cityNameEntry.setMinimumSize(QtCore.QSize(0, 80))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -80,7 +117,7 @@ class Ui_Dialog(object):
         self.verticalLayout.addWidget(self.cityNameEntry)
         spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.verticalLayout.addItem(spacerItem3)
-        self.confirmBtn = QtWidgets.QPushButton(self.frame)
+        self.confirmBtn = Button(self.frame)
         self.confirmBtn.setMinimumSize(QtCore.QSize(0, 100))
         font = QtGui.QFont()
         font.setFamily("Arial")
@@ -126,7 +163,7 @@ class Ui_Dialog(object):
                 ui = show.Ui_Dialog()
                 cityname=data['name']
                 weather=data['weather'][0]['main']
-                temp=data['main']['temp']
+                temp=data['main']['temp']-273.15
                 ui.setupUi(Dialog,cityname,weather,temp)
                 Dialog.show()
                 Dialog.exec_()

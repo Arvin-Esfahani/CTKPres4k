@@ -113,7 +113,7 @@ class Ui_Dialog(object):
         Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
         self.cityNameLabel.setText(_translate("Dialog", self.cityName))
         self.weatherLabel.setText(_translate("Dialog", self.weather))
-        self.degreeLabel.setText(_translate("Dialog", "{} degrees fahrenheit".format(self.temperature)))
+        self.degreeLabel.setText(_translate("Dialog", "{} degrees celcius".format(self.temperature)))
 
 
 if __name__ == "__main__":
