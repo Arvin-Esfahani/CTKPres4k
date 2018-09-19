@@ -1,0 +1,126 @@
+# -*- coding: utf-8 -*-
+
+# Form implementation generated from reading ui file 'show.ui'
+#
+# Created by: PyQt5 UI code generator 5.10.1
+#
+# WARNING! All changes made in this file will be lost!
+
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+class Ui_Dialog(object):
+    def setupUi(self, Dialog, cityname,weather, temperature):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(668, 912)
+        Dialog.setMinimumSize(QtCore.QSize(668, 912))
+        Dialog.setMaximumSize(QtCore.QSize(668, 912))
+        self.cityName=cityname
+        self.weather=weather
+        self.temperature=temperature
+        self.horizontalLayout = QtWidgets.QHBoxLayout(Dialog)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.frame = QtWidgets.QFrame(Dialog)
+        self.frame.setStyleSheet(" border-radius: 10px;\n"
+"background-color: rgb(105, 8, 51);")
+        self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.frame.setObjectName("frame")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.frame)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.logoLayoutH = QtWidgets.QHBoxLayout()
+        self.logoLayoutH.setObjectName("logoLayoutH")
+        spacerItem = QtWidgets.QSpacerItem(40, 300, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.logoLayoutH.addItem(spacerItem)
+        self.logo = QtWidgets.QLabel(self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.logo.sizePolicy().hasHeightForWidth())
+        self.logo.setSizePolicy(sizePolicy)
+        self.logo.setMinimumSize(QtCore.QSize(300, 300))
+        self.logo.setMaximumSize(QtCore.QSize(150, 150))
+        self.logo.setText("")
+        self.logo.setPixmap(QtGui.QPixmap("owm.png"))
+        self.logo.setScaledContents(True)
+        self.logo.setObjectName("logo")
+        self.logoLayoutH.addWidget(self.logo)
+        spacerItem1 = QtWidgets.QSpacerItem(40, 300, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
+        self.logoLayoutH.addItem(spacerItem1)
+        self.verticalLayout.addLayout(self.logoLayoutH)
+        spacerItem2 = QtWidgets.QSpacerItem(20, 100, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Fixed)
+        self.verticalLayout.addItem(spacerItem2)
+        self.cityNameLabel = QtWidgets.QLabel(self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.cityNameLabel.sizePolicy().hasHeightForWidth())
+        self.cityNameLabel.setSizePolicy(sizePolicy)
+        self.cityNameLabel.setMinimumSize(QtCore.QSize(0, 70))
+        self.cityNameLabel.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("B Titr")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.cityNameLabel.setFont(font)
+        self.cityNameLabel.setStyleSheet("color: rgb(255, 255, 255);")
+        self.cityNameLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.cityNameLabel.setObjectName("cityNameLabel")
+        self.verticalLayout.addWidget(self.cityNameLabel)
+        self.weatherLabel = QtWidgets.QLabel(self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.weatherLabel.sizePolicy().hasHeightForWidth())
+        self.weatherLabel.setSizePolicy(sizePolicy)
+        self.weatherLabel.setMinimumSize(QtCore.QSize(0, 70))
+        self.weatherLabel.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.weatherLabel.setFont(font)
+        self.weatherLabel.setStyleSheet("color: rgb(255, 255, 255);")
+        self.weatherLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.weatherLabel.setObjectName("weatherLabel")
+        self.verticalLayout.addWidget(self.weatherLabel)
+        self.degreeLabel = QtWidgets.QLabel(self.frame)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.degreeLabel.sizePolicy().hasHeightForWidth())
+        self.degreeLabel.setSizePolicy(sizePolicy)
+        self.degreeLabel.setMinimumSize(QtCore.QSize(0, 70))
+        self.degreeLabel.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        font = QtGui.QFont()
+        font.setFamily("Arial")
+        font.setPointSize(14)
+        font.setBold(True)
+        font.setWeight(75)
+        self.degreeLabel.setFont(font)
+        self.degreeLabel.setStyleSheet("color: rgb(255, 255, 255);")
+        self.degreeLabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.degreeLabel.setObjectName("degreeLabel")
+        self.verticalLayout.addWidget(self.degreeLabel)
+        self.horizontalLayout.addWidget(self.frame)
+
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
+
+    def retranslateUi(self, Dialog):
+        _translate = QtCore.QCoreApplication.translate
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.cityNameLabel.setText(_translate("Dialog", self.cityName))
+        self.weatherLabel.setText(_translate("Dialog", self.weather))
+        self.degreeLabel.setText(_translate("Dialog", "{} degrees fahrenheit".format(self.temperature)))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Dialog = QtWidgets.QDialog()
+    ui = Ui_Dialog()
+    ui.setupUi(Dialog)
+    Dialog.show()
+    sys.exit(app.exec_())
