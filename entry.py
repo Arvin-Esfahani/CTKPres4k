@@ -108,27 +108,28 @@ class Ui_Dialog(object):
         self.confirmBtn.setText(_translate("Dialog", "Show Weather"))
 
     def findWeather(self,city):
-        str="http://api.openweathermap.org/data/2.5/weather?q={}&APPID={}".format(city,APICODE)
-        r = requests.get(str)
-        data = json.loads(r.text)
-        if data['cod']=='404':
-            msg = QMessageBox()
-            msg.setIcon(QMessageBox.Critical)
-            msg.setText("Error")
-            msg.setInformativeText("City not found")
-            msg.setWindowTitle("Error")
-            msg.setStandardButtons(QMessageBox.Ok)
-            msg.exec_()
-        else:
-            import show
-            Dialog = QtWidgets.QDialog()
-            ui = show.Ui_Dialog()
-            cityname=data['name']
-            weather=data['weather'][0]['main']
-            temp=data['main']['temp']
-            ui.setupUi(Dialog,cityname,weather,temp)
-            Dialog.show()
-            Dialog.exec_()
+        if city!="":
+            str="http://api.openweathermap.org/data/2.5/weather?q={}&APPID={}".format(city,APICODE)
+            r = requests.get(str)
+            data = json.loads(r.text)
+            if data['cod']=='404':
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Critical)
+                msg.setText("Error")
+                msg.setInformativeText("City not found")
+                msg.setWindowTitle("Error")
+                msg.setStandardButtons(QMessageBox.Ok)
+                msg.exec_()
+            else:
+                import show
+                Dialog = QtWidgets.QDialog()
+                ui = show.Ui_Dialog()
+                cityname=data['name']
+                weather=data['weather'][0]['main']
+                temp=data['main']['temp']
+                ui.setupUi(Dialog,cityname,weather,temp)
+                Dialog.show()
+                Dialog.exec_()
 
 if __name__ == "__main__":
     import sys
